@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>أدهم فارس | Software Developer</title>
+    <link rel="icon" href="adham.jpg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* إضافة قاعدة Box-sizing لحماية التصميم من التكسير */
+        * { box-sizing: border-box; }
+
+        :root {
+            --bg-color: #0f172a;
+            --primary-color: #00f2fe; 
+            --secondary-color: #4facfe;
+            --text-color: #f8fafc;
+            --text-muted: #e2e8f0; 
+            --card-bg: rgba(30, 41, 59, 0.65);
+        }
+        
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--secondary-color); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
+
+        /* تعديل الـ Body لحل مشكلة الأزرار العائمة */
+        body {
+            margin: 0;
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            background-image: 
+                radial-gradient(circle at top right, rgba(30, 41, 59, 0.8), #020617),
+                linear-gradient(rgba(0, 242, 254, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 30px 30px, 30px 30px;
+            min-height: 100vh;
+            padding-bottom: 50px;
+            overflow-x: hidden; /* تم وضعه هنا فقط للحماية */
+            position: relative;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero {
+            text-align: center;
+            padding: 50px 20px 20px;
+            animation: fadeInUp 0.8s ease backwards;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid transparent;
+            background: linear-gradient(var(--bg-color), var(--bg-color)) padding-box, 
+                        linear-gradient(45deg, var(--primary-color), var(--secondary-color)) border-box;
+            object-fit: cover;
+            box-shadow: 0 0 25px rgba(79, 172, 254, 0.4);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 35px rgba(79, 172, 254, 0.7);
+        }
+
+        .hero h1 {
+            margin: 15px 0 5px;
+            font-size: 2.5em;
+            background: linear-gradient(45deg, #fff, var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .security-badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399; 
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9em;
+            font-weight: bold;
+            border: 1px solid #10b981;
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+        }
+
+        .skills-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+
+        .skill-badge {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            color: var(--primary-color);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+
+        .skill-badge:hover, .skill-badge:active {
+            background: rgba(0, 242, 254, 0.15) !important;
+            color: #fff !important; /* لون الخط هيبقى أبيض ناصع */
+            border-color: var(--primary-color) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 0 12px rgba(0, 242, 254, 0.4); /* توهج نيون خفيف */
+        }
+
+        ::selection {
+            background: var(--primary-color);
+            color: #000;
+        }
+
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+            pointer-events: none;
+            animation: floatOrb 8s infinite alternate ease-in-out;
+        }
+        .orb-1 { 
+            width: 350px; height: 350px; 
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, transparent 70%); 
+            top: -50px; left: -100px; 
+        }
+        .orb-2 { 
+            width: 300px; height: 300px; 
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%); 
+            top: 40%; right: -50px; animation-delay: -4s; 
+        }
+        
+        @keyframes floatOrb {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(30px); }
+        }
+
+        /* شريط الإحصائيات المحسن لعدم كسر الشاشة */
+        .glass-stats-bar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 242, 254, 0.15);
+            border-radius: 20px;
+            padding: 20px 10px;
+            margin: 10px auto 40px;
+            width: 92%; /* لحل مشكلة الخروج عن الشاشة */
+            max-width: 800px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3), inset 0 0 20px rgba(0, 242, 254, 0.05);
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .stat-item {
+            flex: 1;
+            text-align: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0 5px;
+        }
+        .stat-item:first-child { border-left: none; }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9em;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 50px 0 30px;
+            font-size: 2em;
+            position: relative;
+            animation: fadeInUp 0.8s ease 0.3s backwards;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 0 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 40px rgba(79, 172, 254, 0.2);
+        }
+
+        .img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-img-thumb {
+            width: 100%;
+            height: 100%;
+            background-color: #1e293b;
+            object-fit: cover;
+            border-bottom: 2px solid rgba(255,255,255,0.05);
+            transition: transform 0.5s;
+        }
+
+        .img-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 1.2em;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s;
+            backdrop-filter: blur(3px);
+        }
+
+        .project-card:hover .project-img-thumb { transform: scale(1.1); }
+        .project-card:hover .img-overlay { opacity: 1; }
+
+        .project-info { padding: 20px; }
+        .project-info h3 { margin: 0 0 10px; color: var(--text-color); font-size: 1.3em; }
+        .project-info p { color: var(--text-muted); font-size: 0.95em; line-height: 1.6; }
+
+        .testimonials {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 0 20px 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease 0.5s backwards;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 320px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 5px solid var(--primary-color);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+        }
+        
+        .testimonial-card:hover { transform: translateX(-5px); }
+        .testimonial-card p { color: var(--text-muted); font-style: italic; line-height: 1.7; }
+
+        /* حل مشكلة الأزرار العائمة بشكل نهائي */
+        .floating-contacts {
+            position: fixed;
+            bottom: 20px;
+            right: 20px; 
+            left: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 9999; /* رقم عالي جداً لمنع أي عنصر من تغطيته */
+        }
+
+        .float-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 28px;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+        }
+
+        .whatsapp { background-color: #25d366; }
+        .messenger { background: linear-gradient(45deg, #00c6ff, #0072ff); }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(0, 242, 254, 0.15);
+            object-fit: contain;
+            z-index: 10005; 
+        }
+
+        .close {
+            position: absolute;
+            top: 20px; right: 30px;
+            color: #f1f1f1;
+            font-size: 45px; font-weight: bold;
+            cursor: pointer;
+            z-index: 10020;
+            transition: color 0.3s;
+        }
+        
+        .close:hover { color: var(--primary-color); text-shadow: 0 0 10px var(--primary-color); }
+
+        .slider-controls {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 3%;
+            box-sizing: border-box;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10010; 
+            pointer-events: none; 
+        }
+
+        .prev, .next {
+            pointer-events: auto; 
+            cursor: pointer;
+            width: 50px; height: 50px;
+            background: rgba(15, 23, 42, 0.8); 
+            color: var(--primary-color);
+            font-weight: bold; font-size: 24px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center; align-items: center;
+            user-select: none;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(0, 242, 254, 0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        .prev:hover, .next:hover {
+            background: var(--primary-color);
+            color: #000;
+            border-color: #fff;
+            box-shadow: 0 0 20px var(--primary-color);
+            transform: scale(1.1);
+        }
+        
+        .img-counter {
+            color: white;
+            margin-top: 20px;
+            font-size: 1.1em;
+            letter-spacing: 2px;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 20px;
+            border-radius: 20px;
+            z-index: 10010;
+        }
+        
+        /* الكود المطور للكتابة التلقائية لحل مشكلة الموبايل */
+        .typewriter-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-left: 3px solid var(--primary-color);
+            animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
+            color: var(--text-muted);
+            font-size: 1.25em; 
+            font-weight: 500;
+            margin-bottom: 15px;
+            max-width: 100%;
+        }
+
+        .expert-bio {
+            font-size: 1.1em; 
+            color: var(--text-muted); 
+            max-width: 650px; 
+            margin: 0 auto 20px; 
+            line-height: 1.8;
+            padding: 0 20px; 
+        }
+
+        .glow-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 25px;
+            background: linear-gradient(45deg, var(--bg-color), rgba(30, 41, 59, 0.9));
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .glow-btn:hover {
+            background: var(--primary-color);
+            color: #000;
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.6);
+            transform: translateY(-3px);
+        }
+
+        .live-link-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 6px 15px;
+            background-color: rgba(0, 242, 254, 0.1);
+            color: var(--primary-color);
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: 0.3s;
+            border: 1px solid rgba(0, 242, 254, 0.3);
+        }
+        .live-link-btn:hover {
+            background-color: var(--primary-color);
+            color: #000;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            transition: 0s;
+            pointer-events: none;
+        }
+        .project-card:hover::after {
+            left: 200%;
+            transition: 0.8s ease-in-out;
+        }
+
+                  /* قواعد الشاشات الصغيرة (الموبايل) - نسخة السرعة الفائقة 🚀 */
+        @media (max-width: 480px) {
+            .hero { padding-top: 30px; }
+            .hero h1 { font-size: 2.2em; }
+            
+            /* إيقاف الأنيميشن للكتابة */
+            .typewriter-text { 
+                white-space: normal; 
+                animation: none; 
+                border-left: none; 
+                font-size: 1.1em;
+            }
+            
+            .skills-wrapper { padding: 0 5px; gap: 6px; }
+            .skill-badge { font-size: 0.75em; padding: 4px 8px; }
+            .expert-bio { font-size: 0.95em; }
+            
+            .glass-stats-bar { padding: 12px 5px; width: 95%; }
+            .stat-number { font-size: 1.3em; }
+            .stat-label { font-size: 0.7em; }
+            .float-btn { width: 50px; height: 50px; font-size: 24px; }
+
+            /* --------- إضافات حل الـ Lag والتسريع --------- */
+            
+            /* 1. إخفاء كرات الطاقة والخلفية المعقدة في الموبايل */
+            .bg-orb { display: none !important; animation: none !important; }
+            body { background-image: none !important; background-color: var(--bg-color) !important; }
+
+            /* 2. إلغاء تأثير الزجاج (Blur) لأنه يدمر معالج الموبايل */
+            .glass-stats-bar, 
+            .testimonial-card, 
+            .slider-controls .prev, 
+            .slider-controls .next {
+                backdrop-filter: none !important;
+                background-color: rgba(30, 41, 59, 0.98) !important;
+            }
+
+            /* 3. إيقاف حركة لمعة الكروت عند التمرير */
+            .project-card::after { display: none !important; }
+            .project-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        }
+            
+            /* إيقاف الأنيميشن في الموبايل للكتابة لمنع كسر الشاشة */
+            .typewriter-text { 
+                white-space: normal; 
+                animation: none; 
+                border-left: none; 
+                font-size: 1.1em;
+            }
+            
+            .skills-wrapper { padding: 0 5px; gap: 6px; }
+            .skill-badge { font-size: 0.75em; padding: 4px 8px; }
+            .expert-bio { font-size: 0.95em; }
+            
+            /* تظبيط شريط الإحصائيات ليناسب أصغر شاشة */
+            .glass-stats-bar { padding: 12px 5px; width: 95%; }
+            .stat-number { font-size: 1.3em; }
+            .stat-label { font-size: 0.7em; }
+            
+            .float-btn { width: 50px; height: 50px; font-size: 24px; }
+        }
+        
+                /* تأثير الظهور عند السكرول (خفيف جداً) */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal-element.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* تصميم الفوتر (تذييل الموقع) */
+        .site-footer {
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(15, 23, 42, 0.8);
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+        .site-footer span {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <div class="hero">
+        <img src="adham.jpg" alt="أدهم فارس" class="profile-img" onerror="this.src='https://via.placeholder.com/160/1e293b/00f2fe?text=Adham'">
+        <h1>أدهم فارس</h1>
+        <div style="text-align: center;"><p class="typewriter-text">Software Developer | Web & Mobile Apps</p></div>
+        
+        <div class="skills-wrapper">
+            <span class="skill-badge"><i class="fas fa-code"></i> Full-Stack Dev</span>
+            <span class="skill-badge"><i class="fas fa-shield-alt"></i> Cyber Security</span>
+            <span class="skill-badge"><i class="fas fa-database"></i> Databases & APIs</span>
+            <span class="skill-badge"><i class="fab fa-python"></i> Python Apps</span>
+            <span class="skill-badge"><i class="fas fa-mobile-alt"></i> UI/UX Design</span>
+        </div>
+
+        <p class="expert-bio">
+            مطور برمجيات متكامل (Full-Stack)، أعمل على تحويل الأفكار المعقدة إلى أنظمة رقمية ذكية وقابلة للتوسع. أدمج بين قوة الأداء، سلاسة الاستخدام، وأعلى معايير الأمن السيبراني لتقديم حلول برمجية احترافية للشركات والمراكز.
+        </p>
+
+        <a href="https://linktr.ee/AdhamFares" target="_blank" class="glow-btn">
+            <i class="fas fa-link"></i> جميع روابطي وتواصلي
+        </a>
+
+        <br><br>
+        <div class="security-badge">
+            <i class="fas fa-check-circle"></i> تطوير برمجي بمعايير أمان عالية
+        </div>
+    </div>
+
+    <div class="glass-stats-bar">
+        <div class="stat-item">
+            <div class="stat-number" data-target="1200">0</div>
+            <div class="stat-label">ساعة برمجة<br>وتطوير</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" data-target="100">0</div>
+            <div class="stat-label">% أمان<br>وتشفير بيانات</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number" data-target="500">0</div>
+            <div class="stat-label">مستخدم نشط<br>للأنظمة</div>
+        </div>
+    </div>
+
+    <h2 class="section-title">أبرز مشاريعي</h2>
+    <div class="projects-grid">
+        <div class="project-card" onclick="openGallery(['1775140446622.jpg', '1775140409335.jpg', '1775140499560.jpg', '1775140521694.jpg', '1775140564322.jpg'])">
+            <div class="img-wrapper">
+                <img src="1775140409335.jpg" alt="سيستم مركز طبي" class="project-img-thumb" onerror="this.src='https://via.placeholder.com/400x200/1e293b/4facfe?text=Clinic+System'">
+                <div class="img-overlay"><i class="fas fa-images" style="margin-left: 8px;"></i> عرض 5 صور</div>
+            </div>
+            <div class="project-info">
+                <h3>نظام إدارة مركز التخاطب</h3>
+                <p>نظام متكامل لإدارة بيانات الحالات، تنظيم مواعيد الجلسات، وإدارة جداول الأخصائيين بكفاءة عالية.</p>
+            </div>
+        </div>
+
+        <div class="project-card" onclick="openGallery(['1775140231339.jpg', '1775140253931.jpg', '1775140271834.jpg'])">
+            <div class="img-wrapper">
+                <img src="1775140231339.jpg" alt="برنامج نور الهدى" class="project-img-thumb" onerror="this.src='https://via.placeholder.com/400x200/1e293b/4facfe?text=Noor+Alhuda'">
+                <div class="img-overlay"><i class="fas fa-images" style="margin-left: 8px;"></i> عرض 3 صور</div>
+            </div>
+            <div class="project-info">
+                <h3>برنامج نور الهدى</h3>
+                <p>تطبيق ديني شامل يتميز بواجهة استخدام مريحة وسريعة، مصمم لخدمة المستخدمين بفعالية.</p>
+                <a href="https://nour-alhuda-adham.netlify.app/" target="_blank" class="live-link-btn" onclick="event.stopPropagation();"><i class="fas fa-external-link-alt"></i> زيارة الموقع الحي</a>
+            </div>
+        </div>
+
+        <div class="project-card" onclick="openGallery(['1775140304123.jpg', '1775140335823.jpg', '1775140356102.jpg', '1775140372560.jpg'])">
+            <div class="img-wrapper">
+                <img src="1775140335823.jpg" alt="نظام إدارة الحسابات" class="project-img-thumb" onerror="this.src='https://via.placeholder.com/400x200/1e293b/4facfe?text=Accounting+App'">
+                <div class="img-overlay"><i class="fas fa-images" style="margin-left: 8px;"></i> عرض 4 صور</div>
+            </div>
+            <div class="project-info">
+                <h3>تطبيق حسابات ومواعيد</h3>
+                <p>تطبيق مخصص لإدارة الحسابات المالية والمواعيد بدقة، لتسهيل تتبع المصروفات بشكل آمن.</p>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">أثر مشاريعي</h2>
+    <div class="testimonials">
+        <div class="testimonial-card">
+            <p>"السيستم حل مشكلة كبيرة في تنظيم الملفات والمواعيد، سرعة في الأداء وتنظيم ممتاز لجدول الأخصائيين."</p>
+            <h4 style="color: var(--primary-color); margin-bottom: 0; margin-top: 15px;">- إدارة مركز التخاطب</h4>
+        </div>
+        <div class="testimonial-card">
+            <p>"تطبيق الحسابات سهل جداً في الاستخدام، ونظم متابعة الميزانية والمواعيد بشكل دقيق ومريح جداً يومياً."</p>
+            <h4 style="color: var(--primary-color); margin-bottom: 0; margin-top: 15px;">- مستخدم لتطبيق الحسابات</h4>
+        </div>
+    </div>
+
+    <div class="floating-contacts">
+        <a href="https://wa.me/201286172120" target="_blank" class="float-btn whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://m.me/AdhamFares1010" target="_blank" class="float-btn messenger">
+            <i class="fab fa-facebook-messenger"></i>
+        </a>
+    </div>
+        <footer class="site-footer">
+        <p>جميع الحقوق محفوظة © 2026 | صُنع بشغف بواسطة <span>أدهم فارس</span></p>
+    </footer>
+
+
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImg">
+        <div class="slider-controls" id="sliderControls">
+            <div class="next" onclick="changeImg(1)">&#10095;</div>
+            <div class="prev" onclick="changeImg(-1)">&#10094;</div>
+        </div>
+        <div class="img-counter" id="imgCounter">1 / 1</div>
+    </div>
+
+    <script>
+        const counters = document.querySelectorAll('.stat-number');
+        counters.forEach(counter => {
+            counter.innerText = '0';
+            const updateCounter = () => {
+                const target = +counter.getAttribute('data-target');
+                const c = +counter.innerText;
+                const increment = target / 40; 
+                if (c < target) {
+                    counter.innerText = Math.ceil(c + increment);
+                    setTimeout(updateCounter, 30);
+                } else {
+                    counter.innerText = target + (target > 100 ? '+' : '');
+                }
+            };
+            setTimeout(updateCounter, 700); 
+        });
+
+        let currentImages = [];
+        let currentIndex = 0;
+
+        function openGallery(imageArray) {
+            currentImages = imageArray;
+            currentIndex = 0;
+            const modal = document.getElementById("imageModal");
+            const controls = document.getElementById("sliderControls");
+            
+            if(currentImages.length > 1) {
+                controls.style.display = "flex";
+            } else {
+                controls.style.display = "none";
+            }
+
+            modal.style.display = "flex";
+            updateModalImage();
+        }
+
+        function changeImg(direction) {
+            currentIndex += direction;
+            if (currentIndex >= currentImages.length) {
+                currentIndex = 0;
+            } else if (currentIndex < 0) {
+                currentIndex = currentImages.length - 1;
+            }
+            updateModalImage();
+        }
+
+        function updateModalImage() {
+            const modalImg = document.getElementById("modalImg");
+            const counterText = document.getElementById("imgCounter");
+            
+            modalImg.src = currentImages[currentIndex];
+            counterText.innerText = (currentIndex + 1) + " / " + currentImages.length;
+
+            modalImg.onerror = function() {
+                this.src = 'https://via.placeholder.com/800x500/1e293b/00f2fe?text=Image+Not+Found';
+            };
+        }
+
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("imageModal");
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        
+        document.addEventListener('keydown', function(event) {
+            const modal = document.getElementById("imageModal");
+            if (modal.style.display === "flex") {
+                if (event.key === "ArrowRight") changeImg(1);
+                if (event.key === "ArrowLeft") changeImg(-1);
+                if (event.key === "Escape") closeModal();
+            }
+        });
+        
+                // سكريبت الظهور التدريجي عند السكرول (Scroll Reveal)
+        document.addEventListener("DOMContentLoaded", function() {
+            // هنضيف كلاس reveal-element لكل المشاريع والآراء والعناوين
+            const elementsToReveal = document.querySelectorAll('.project-card, .testimonial-card, .section-title');
+            elementsToReveal.forEach(el => el.classList.add('reveal-element'));
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // عشان تظهر مرة واحدة بس وماتعملش لاج
+                    }
+                });
+            }, { threshold: 0.15 }); // العنصر يظهر لما 15% منه يبان في الشاشة
+
+            elementsToReveal.forEach(el => observer.observe(el));
+        });
+        
+                // منع كليك يمين
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        
+        // منع فتح الـ Inspect Element (F12 و Ctrl+Shift+I)
+        document.onkeydown = function(e) {
+            if(e.keyCode == 123) { return false; }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { return false; }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { return false; }
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; }
+        }
+        
+    </script>
+</body>
+</html>
