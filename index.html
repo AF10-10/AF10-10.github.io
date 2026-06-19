@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+  <meta name="google-site-verification" content="CJk80rKrAoYoa-xUq80rlyJQnEe7G-Lb7qg-jG9_kfo" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>أدهم فارس | Software Developer</title>
+        <meta name="description" content="أدهم فارس - مهندس برمجيات وذكاء اصطناعي (Software & AI Engineer). متخصص في تطوير تطبيقات الويب والموبايل، الأنظمة المتكاملة، والأمن السيبراني في مصر.">
+    <meta name="keywords" content="أدهم فارس, Adham Fares, مبرمج, مهندس برمجيات, مطور ويب, Software Engineer, AI Engineer, Full-Stack Developer, Cyber Security, مصر">
+    <meta name="author" content="أدهم فارس">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="أدهم فارس | Software & AI Engineer">
+    <meta property="og:description" content="أبتكر حلولاً رقمية ذكية وآمنة. تصفح سابقة أعمالي ومشاريعي البرمجية.">
+    <meta property="og:image" content="adham.jpg">
+    <meta property="og:type" content="website">
+    <title>أدهم فارس | Software Engineer</title>
     <link rel="icon" href="adham.jpg" type="image/jpeg">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* إضافة قاعدة Box-sizing لحماية التصميم من التكسير */
         * { box-sizing: border-box; }
 
         :root {
@@ -25,7 +34,6 @@
         ::-webkit-scrollbar-thumb { background: var(--secondary-color); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
 
-        /* تعديل الـ Body لحل مشكلة الأزرار العائمة */
         body {
             margin: 0;
             font-family: 'Tajawal', sans-serif;
@@ -38,7 +46,7 @@
             background-size: 100% 100%, 30px 30px, 30px 30px;
             min-height: 100vh;
             padding-bottom: 50px;
-            overflow-x: hidden; /* تم وضعه هنا فقط للحماية */
+            overflow-x: hidden;
             position: relative;
         }
 
@@ -113,10 +121,10 @@
 
         .skill-badge:hover, .skill-badge:active {
             background: rgba(0, 242, 254, 0.15) !important;
-            color: #fff !important; /* لون الخط هيبقى أبيض ناصع */
+            color: #fff !important;
             border-color: var(--primary-color) !important;
             transform: translateY(-2px);
-            box-shadow: 0 0 12px rgba(0, 242, 254, 0.4); /* توهج نيون خفيف */
+            box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
         }
 
         ::selection {
@@ -147,7 +155,6 @@
             100% { transform: translateY(30px); }
         }
 
-        /* شريط الإحصائيات المحسن لعدم كسر الشاشة */
         .glass-stats-bar {
             display: flex;
             justify-content: space-around;
@@ -158,7 +165,7 @@
             border-radius: 20px;
             padding: 20px 10px;
             margin: 10px auto 40px;
-            width: 92%; /* لحل مشكلة الخروج عن الشاشة */
+            width: 92%;
             max-width: 800px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.3), inset 0 0 20px rgba(0, 242, 254, 0.05);
             animation: fadeInUp 0.8s ease 0.2s backwards;
@@ -286,7 +293,6 @@
         .testimonial-card:hover { transform: translateX(-5px); }
         .testimonial-card p { color: var(--text-muted); font-style: italic; line-height: 1.7; }
 
-        /* حل مشكلة الأزرار العائمة بشكل نهائي */
         .floating-contacts {
             position: fixed;
             bottom: 20px;
@@ -295,7 +301,7 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-            z-index: 9999; /* رقم عالي جداً لمنع أي عنصر من تغطيته */
+            z-index: 9999;
         }
 
         .float-btn {
@@ -402,7 +408,6 @@
             z-index: 10010;
         }
         
-        /* الكود المطور للكتابة التلقائية لحل مشكلة الموبايل */
         .typewriter-text {
             display: inline-block;
             overflow: hidden;
@@ -478,12 +483,10 @@
             transition: 0.8s ease-in-out;
         }
 
-                  /* قواعد الشاشات الصغيرة (الموبايل) - نسخة السرعة الفائقة 🚀 */
         @media (max-width: 480px) {
             .hero { padding-top: 30px; }
             .hero h1 { font-size: 2.2em; }
             
-            /* إيقاف الأنيميشن للكتابة */
             .typewriter-text { 
                 white-space: normal; 
                 animation: none; 
@@ -500,13 +503,9 @@
             .stat-label { font-size: 0.7em; }
             .float-btn { width: 50px; height: 50px; font-size: 24px; }
 
-            /* --------- إضافات حل الـ Lag والتسريع --------- */
-            
-            /* 1. إخفاء كرات الطاقة والخلفية المعقدة في الموبايل */
             .bg-orb { display: none !important; animation: none !important; }
             body { background-image: none !important; background-color: var(--bg-color) !important; }
 
-            /* 2. إلغاء تأثير الزجاج (Blur) لأنه يدمر معالج الموبايل */
             .glass-stats-bar, 
             .testimonial-card, 
             .slider-controls .prev, 
@@ -515,12 +514,10 @@
                 background-color: rgba(30, 41, 59, 0.98) !important;
             }
 
-            /* 3. إيقاف حركة لمعة الكروت عند التمرير */
             .project-card::after { display: none !important; }
             .project-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
         }
             
-            /* إيقاف الأنيميشن في الموبايل للكتابة لمنع كسر الشاشة */
             .typewriter-text { 
                 white-space: normal; 
                 animation: none; 
@@ -532,7 +529,6 @@
             .skill-badge { font-size: 0.75em; padding: 4px 8px; }
             .expert-bio { font-size: 0.95em; }
             
-            /* تظبيط شريط الإحصائيات ليناسب أصغر شاشة */
             .glass-stats-bar { padding: 12px 5px; width: 95%; }
             .stat-number { font-size: 1.3em; }
             .stat-label { font-size: 0.7em; }
@@ -540,7 +536,6 @@
             .float-btn { width: 50px; height: 50px; font-size: 24px; }
         }
         
-                /* تأثير الظهور عند السكرول (خفيف جداً) */
         .reveal-element {
             opacity: 0;
             transform: translateY(30px);
@@ -551,7 +546,6 @@
             transform: translateY(0);
         }
 
-        /* تصميم الفوتر (تذييل الموقع) */
         .site-footer {
             text-align: center;
             padding: 25px 15px;
@@ -566,6 +560,145 @@
             font-weight: bold;
         }
         
+                .floating-services-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: auto;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: #000;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: 900;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 5px 20px rgba(0, 242, 254, 0.4);
+            animation: pulseGlow 2s infinite ease-in-out;
+            transition: all 0.3s ease;
+        }
+
+        .floating-services-btn i {
+            font-size: 1.2em;
+        }
+
+        .floating-services-btn:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.6);
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: translateY(0); box-shadow: 0 5px 15px rgba(0, 242, 254, 0.4); }
+            50% { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 242, 254, 0.7); }
+            100% { transform: translateY(0); box-shadow: 0 5px 15px rgba(0, 242, 254, 0.4); }
+        }
+
+        .services-modal {
+            display: none;
+            position: fixed;
+            z-index: 100000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(15, 23, 42, 0.98);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .services-container {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid var(--primary-color);
+            box-shadow: 0 0 40px rgba(0, 242, 254, 0.15);
+            max-width: 800px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            border-radius: 25px;
+            padding: 35px;
+            position: relative;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .service-box {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .service-box:hover {
+            border-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.1);
+        }
+
+        .service-box i {
+            font-size: 2.2em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+        }
+
+        .service-box h3 {
+            margin: 0 0 10px;
+            font-size: 1.2em;
+            color: #fff;
+        }
+
+        .service-box p {
+            margin: 0;
+            font-size: 0.9em;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 480px) {
+            .floating-services-btn span { display: none; }
+            .floating-services-btn { padding: 15px; border-radius: 50%; bottom: 90px; left: 20px; }
+            .services-container { padding: 20px; }
+        }
+        
+        .close-services {
+            position: fixed;
+            top: 25px;
+            left: 20px;
+            color: #fff;
+            font-size: 32px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 100010;
+            background: rgba(15, 23, 42, 0.95);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            border: 1px solid var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .close-services:hover, .close-services:active {
+            color: #000;
+            background: var(--primary-color);
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.6);
+        }
+        
+        .services-container {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -575,9 +708,10 @@
     <div class="hero">
         <img src="adham.jpg" alt="أدهم فارس" class="profile-img" onerror="this.src='https://via.placeholder.com/160/1e293b/00f2fe?text=Adham'">
         <h1>أدهم فارس</h1>
-        <div style="text-align: center;"><p class="typewriter-text">Software Developer | Web & Mobile Apps</p></div>
+        <div style="text-align: center;"><p class="typewriter-text">Software Engineer | Web & Mobile Apps</p></div>
         
         <div class="skills-wrapper">
+          <span class="skill-badge"><i class="fas fa-brain"></i> AI & LLM Models</span>
             <span class="skill-badge"><i class="fas fa-code"></i> Full-Stack Dev</span>
             <span class="skill-badge"><i class="fas fa-shield-alt"></i> Cyber Security</span>
             <span class="skill-badge"><i class="fas fa-database"></i> Databases & APIs</span>
@@ -586,7 +720,7 @@
         </div>
 
         <p class="expert-bio">
-            مطور برمجيات متكامل (Full-Stack)، أعمل على تحويل الأفكار المعقدة إلى أنظمة رقمية ذكية وقابلة للتوسع. أدمج بين قوة الأداء، سلاسة الاستخدام، وأعلى معايير الأمن السيبراني لتقديم حلول برمجية احترافية للشركات والمراكز.
+            مهندس برمجيات متكامل (Full-Stack)، أعمل على تحويل الأفكار المعقدة إلى أنظمة رقمية ذكية وقابلة للتوسع. أدمج بين قوة الأداء، سلاسة الاستخدام، وأعلى معايير الأمن السيبراني لتقديم حلول برمجية احترافية للشركات والمراكز.
         </p>
 
         <a href="https://linktr.ee/AdhamFares" target="_blank" class="glow-btn">
@@ -601,7 +735,7 @@
 
     <div class="glass-stats-bar">
         <div class="stat-item">
-            <div class="stat-number" data-target="1200">0</div>
+            <div class="stat-number" data-target="1600">0</div>
             <div class="stat-label">ساعة برمجة<br>وتطوير</div>
         </div>
         <div class="stat-item">
@@ -609,7 +743,7 @@
             <div class="stat-label">% أمان<br>وتشفير بيانات</div>
         </div>
         <div class="stat-item">
-            <div class="stat-number" data-target="500">0</div>
+            <div class="stat-number" data-target="1000">0</div>
             <div class="stat-label">مستخدم نشط<br>للأنظمة</div>
         </div>
     </div>
@@ -649,6 +783,27 @@
                 <p>تطبيق مخصص لإدارة الحسابات المالية والمواعيد بدقة، لتسهيل تتبع المصروفات بشكل آمن.</p>
             </div>
         </div>
+              <div class="project-card" onclick="openGallery(['1781908456785.jpg', '1781908505668.jpg', '1781908545352.jpg', '1781908560103.jpg', '1781908571448.jpg', '1781908595894.jpg'])">
+    <div class="img-wrapper">
+        <img src="1781908505668.jpg" alt="تطبيق ادارة طلاب المعلمين والمراكز" class="project-img-thumb" loading="lazy" onerror="this.src='https://via.placeholder.com/400x200/1e293b/4facfe?text=Firebase+Integration'">
+        <div class="img-overlay"><i class="fas fa-images" style="margin-left: 8px;"></i> عرض 6 صور</div>
+    </div>
+    <div class="project-info">
+        <h3>تطبيق إدارة شئون الطلاب</h3>
+        <p>نظام متكامل وسريع لإدارة بيانات الطلاب، يتيح متابعة الحضور، تسجيل التقييمات، وإصدار كروت تعريفية (ID) مخصصة لكل طالب بسهولة وفعالية</p>
+    </div>
+</div>
+
+<div class="project-card" onclick="openGallery(['1781908634368.jpg', '1781908646184.jpg', '1781908700730.jpg'])">
+    <div class="img-wrapper">
+        <img src="1781908634368.jpg" alt="فورم تسجيل متميز لمؤسسة" class="project-img-thumb" loading="lazy" onerror="this.src='https://via.placeholder.com/400x200/1e293b/4facfe?text=Script+GUI'">
+        <div class="img-overlay"><i class="fas fa-images" style="margin-left: 8px;"></i> عرض 3 صور</div>
+    </div>
+    <div class="project-info">
+        <h3>نظام تسجيل - مؤسسة الحساب الذهني</h3>
+        <p>بوابة تسجيل محلية وعالمية مصممة لاستيعاب قواعد بيانات ضخمة بمعايير أمان فائقة، مزودة بلوحات تحكم مستقلة للمشرفين لضمان سرعة الإدارة والفرز</p>
+    </div>
+</div>
     </div>
 
     <h2 class="section-title">أثر مشاريعي</h2>
@@ -661,6 +816,15 @@
             <p>"تطبيق الحسابات سهل جداً في الاستخدام، ونظم متابعة الميزانية والمواعيد بشكل دقيق ومريح جداً يومياً."</p>
             <h4 style="color: var(--primary-color); margin-bottom: 0; margin-top: 15px;">- مستخدم لتطبيق الحسابات</h4>
         </div>
+        <div class="testimonial-card">
+    <p>"التطبيق وفر علينا وقت ومجهود كبير في متابعة غياب وتقييمات الطلاب، وميزة طباعة الكارنيهات احترافية جداً وريحتنا من زحمة الشغل الورقي."</p>
+    <h4 style="color: var(--primary-color); margin-bottom: 0; margin-top: 15px;">- مدير مركز تعليمي</h4>
+</div>
+
+<div class="testimonial-card">
+    <p>"كنا محتاجين سيستم قوي يستحمل ضغط التسجيل والأعداد الكبيرة بأمان عالي. البوابة ممتازة جداً، ولوحة تحكم المشرفين سهلت علينا الإدارة والفرز."</p>
+    <h4 style="color: var(--primary-color); margin-bottom: 0; margin-top: 15px;">- إدارة مؤسسة الحساب الذهني</h4>
+</div>
     </div>
 
     <div class="floating-contacts">
@@ -765,9 +929,7 @@
             }
         });
         
-                // سكريبت الظهور التدريجي عند السكرول (Scroll Reveal)
         document.addEventListener("DOMContentLoaded", function() {
-            // هنضيف كلاس reveal-element لكل المشاريع والآراء والعناوين
             const elementsToReveal = document.querySelectorAll('.project-card, .testimonial-card, .section-title');
             elementsToReveal.forEach(el => el.classList.add('reveal-element'));
 
@@ -775,18 +937,16 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); // عشان تظهر مرة واحدة بس وماتعملش لاج
+                        observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.15 }); // العنصر يظهر لما 15% منه يبان في الشاشة
+            }, { threshold: 0.15 });
 
             elementsToReveal.forEach(el => observer.observe(el));
         });
         
-                // منع كليك يمين
         document.addEventListener('contextmenu', event => event.preventDefault());
         
-        // منع فتح الـ Inspect Element (F12 و Ctrl+Shift+I)
         document.onkeydown = function(e) {
             if(e.keyCode == 123) { return false; }
             if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { return false; }
@@ -795,6 +955,57 @@
             if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; }
         }
         
+                function openServicesModal() {
+            document.getElementById("servicesModal").style.display = "flex";
+        }
+
+        function closeServicesModal() {
+            document.getElementById("servicesModal").style.display = "none";
+        }
+
+        window.addEventListener('click', function(event) {
+            const sModal = document.getElementById("servicesModal");
+            if (event.target == sModal) {
+                closeServicesModal();
+            }
+        });
     </script>
+    <div class="floating-services-btn" onclick="openServicesModal()">
+    <i class="fas fa-concierge-bell"></i>
+    <span>الخدمات التي أقدمها</span>
+</div>
+<div id="servicesModal" class="services-modal">
+    <div class="services-container">
+        <div class="close-services" onclick="closeServicesModal()">&times;</div>
+        <h2 style="text-align: center; margin-top: 0; color: #fff; font-size: 2em;">الخدمات الهندسية والبرمجية</h2>
+        <p style="text-align: center; color: var(--primary-color); font-weight: bold; margin-bottom: 30px;">لا أكتب مجرد سطور برمجية؛ بل أبتكر حلولاً رقمية ذكية، آمنة، وقابلة للتوسع.</p>
+        
+        <div class="services-grid">
+            <div class="service-box">
+                <i class="fas fa-brain"></i>
+                <h3>هندسة الذكاء الاصطناعي (AI & LLMs)</h3>
+                <p>بناء وتدريب نماذج ذكاء اصطناعي مخصصة ومحاورات ذكية مستقلة شبيهة بأنظمة ChatGPT و Gemini لتقديم استجابات ذكية وتطوير واجهات التفاعل.</p>
+            </div>
+            
+            <div class="service-box">
+                <i class="fas fa-layer-group"></i>
+                <h3>تطوير الأنظمة المتكاملة (Full-Stack)</h3>
+                <p>تصميم وبرمجة تطبيقات ويب وأنظمة إدارية ومحاسبية ضخمة من الصفر، تربط بين سلاسة واجهات الاستخدام وقوة الأداء البرمجي الخلفي.</p>
+            </div>
+
+            <div class="service-box">
+                <i class="fas fa-shield-alt"></i>
+                <h3>التأمين السيبراني للبيانات</h3>
+                <p>بناء بوابات رقمية محمية بالكامل ضد الاختراق، مع تشفير قواعد البيانات الحساسة وضمان استقرار الأنظمة تحت أعلى مستويات ضغط البيانات.</p>
+            </div>
+
+            <div class="service-box">
+                <i class="fas fa-bolt"></i>
+                <h3>المزامنة اللحظية وتحليل البيانات</h3>
+                <p>ربط الأنظمة بقواعد بيانات سحابية فائقة السرعة تعمل في الوقت الفعلي (Real-time)، مما يضمن تحديث البيانات فوراً وبدون أي زمن تأخير.</p>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
